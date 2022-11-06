@@ -1,6 +1,10 @@
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
 
-const rootReducer = combineReducers({})
+import { blogsReducer } from '../features/Blogs/blogs-slice'
+
+const rootReducer = combineReducers({
+  blogs: blogsReducer,
+})
 
 export const store = configureStore({
   reducer: rootReducer,

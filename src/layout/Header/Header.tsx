@@ -9,7 +9,7 @@ export const Header = () => {
     <header className={style.header}>
       <div className="container">
         <Link to="/">
-          <h1 className={style.title}>Blogger Platform</h1>
+          <p className={style.title}>Blogger Platform</p>
         </Link>
       </div>
     </header>

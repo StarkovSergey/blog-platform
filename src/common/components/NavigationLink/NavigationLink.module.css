@@ -1,0 +1,21 @@
+.link {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  padding: 5px;
+
+  color: var(--color-black);
+}
+
+.link--active {
+  color: var(--color-brand-red);
+}
+
+.svg-icon {
+  fill: var(--color-black);
+}
+
+.link--active .svg-icon {
+  fill: var(--color-brand-red);
+}

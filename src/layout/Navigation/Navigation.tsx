@@ -2,6 +2,9 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 
+import { NavigationLink } from '../../common/components/NavigationLink/NavigationLink'
+import { Paths } from '../../common/routes'
+
 import style from './Navigation.module.css'
 
 export const Navigation = () => {
@@ -9,10 +12,10 @@ export const Navigation = () => {
     <nav className={style.nav}>
       <ul className={style['nav-list']}>
         <li>
-          <NavLink to={'blogs'}>Blogs</NavLink>
+          <NavigationLink to={Paths.Blogs}>Blogs</NavigationLink>
         </li>
         <li>
-          <NavLink to={'posts'}>Posts</NavLink>
+          <NavigationLink to={Paths.Posts}>Posts</NavigationLink>
         </li>
       </ul>
     </nav>

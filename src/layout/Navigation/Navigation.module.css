@@ -1,0 +1,10 @@
+.nav {
+  width: 252px;
+  padding: 43px 64px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

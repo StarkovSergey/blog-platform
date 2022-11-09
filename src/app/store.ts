@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit'
 
-import { blogsReducer } from '../features/Blogs/blogs-slice'
+import { blogsReducer } from '../features/Blogs'
 
 const rootReducer = combineReducers({
   blogs: blogsReducer,
@@ -11,10 +11,10 @@ export const store = configureStore({
 })
 
 export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export type AppRootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
-  RootState,
+  AppRootState,
   unknown,
   Action<string>
 >

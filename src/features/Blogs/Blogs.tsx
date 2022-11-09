@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react'
 
-import { TextInput } from '../../common/components/TextInput/TextInput'
+import { useAppDispatch } from '../../common/hooks/useAppDispatch'
 import { MainSection } from '../../layout/MainSection/MainSection'
 
-import { blogsAPI } from './blogs-api'
+import { fetchBlogs } from './blogs-actions'
 
 export const Blogs = () => {
-  useEffect(() => {
-    const blogs = blogsAPI.getBlogs()
+  const dispatch = useAppDispatch()
 
-    console.log(blogs)
+  useEffect(() => {
+    dispatch(fetchBlogs())
   }, [])
 
-  return (
-    <MainSection title="Blogs">
-      <TextInput />
-    </MainSection>
-  )
+  return <MainSection title="Blogs"></MainSection>
 }

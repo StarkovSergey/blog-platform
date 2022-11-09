@@ -4,8 +4,13 @@ import style from './PageTitle.module.css'
 
 type PropsType = {
   children: ReactNode
+  className?: string
 }
 
-export const PageTitle = ({ children }: PropsType) => {
-  return <h1 className={style.title}>{children}</h1>
+export const PageTitle = ({ children, className, ...props }: PropsType) => {
+  return (
+    <h1 className={`${style.title} ${className}`} {...props}>
+      {children}
+    </h1>
+  )
 }

@@ -1,7 +1,8 @@
 .nav {
   position: relative;
 
-  padding-top: 13px;
+  min-height: 100vh;
+  padding-top: 32px;
   padding-left: 60px;
 }
 

@@ -12,11 +12,6 @@
   transition: 300ms opacity;
 }
 
-.link:hover,
-.link:focus {
-  opacity: 0.7;
-}
-
 .link--active {
   color: var(--color-brand-red);
 }

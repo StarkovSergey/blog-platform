@@ -3,7 +3,7 @@ import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Paths } from '../../common/routes'
-import { Blogs } from '../../features/Blogs/Blogs'
+import { Blogs } from '../../features/Blogs'
 import { Posts } from '../../features/Posts/Posts'
 import { Main } from '../../layout/Main'
 

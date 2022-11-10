@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { RequestStatus } from '../../common/types/RequestStatus'
+import { RequestStatus } from '../../common/types'
 
 import { fetchBlogs } from './blogs-actions'
 import { Blog } from './blogs-api'

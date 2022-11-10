@@ -14,7 +14,7 @@ export type GetBlogsResponse = {
   items: Blog[]
 }
 
-export type Blog = {
+export interface Blog {
   name: string
   youtubeUrl: string
   createdAt: string

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import dragon from '../../../assets/images/placeholders/dragon.jpg'
 import { Paths } from '../../../common/routes'
-import { Post } from '../../../common/types/posts'
+import { Post } from '../../../common/types'
 
 import { PostDescriptionWithBlog } from './PostDescription/PostDescriptionWithBlog/PostDescriptionWithBlog'
 import style from './PostItem.module.css'

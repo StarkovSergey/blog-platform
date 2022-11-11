@@ -15,9 +15,11 @@ type PropsType = {
 export const BlogItem = ({ blog }: PropsType) => {
   return (
     <li className={style.box}>
-      <div className={style.image}>
-        <img src={dragonPlaceholder} alt="blog image" />
-      </div>
+      <Link to={`${Paths.Blogs}/${blog.id}`}>
+        <div className={style.image}>
+          <img src={dragonPlaceholder} alt="blog image" />
+        </div>
+      </Link>
       <div>
         <h3 className={style.title}>
           <Link to={`${Paths.Blogs}/${blog.id}`}>{blog.name}</Link>

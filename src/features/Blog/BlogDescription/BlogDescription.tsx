@@ -17,12 +17,12 @@ export const BlogDescription = ({ blog }: PropsType) => {
         <img src={dragonImage} alt="blog image" />
       </div>
       <div>
-        <h2 className={`section-title`}>{blog.name}</h2>
-        <p>
+        <h2 className={`section-title ${style.title}`}>{blog.name}</h2>
+        <p className={style.date}>
           Blog creation date:&nbsp;
           <time dateTime={blog.createdAt}>{getDate(blog.createdAt)}</time>
         </p>
-        <p>
+        <p className={style.text}>
           <b>{blog.youtubeUrl}</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Aliquam, amet aut beatae dicta, ea et excepturi explicabo iusto labore libero magni
           obcaecati perspiciatis possimus quidem repellat, sint totam vero vitae!

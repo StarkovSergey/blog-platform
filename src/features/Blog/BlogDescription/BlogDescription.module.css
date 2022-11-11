@@ -23,3 +23,25 @@
   display: flex;
   gap: 16px;
 }
+
+.title {
+  margin-bottom: 32px;
+}
+
+.date {
+  margin: 0;
+  margin-bottom: 15px;
+
+  font-size: var(--date-fz);
+  line-height: var(--date-lh);
+  color: var(--color-grey-font);
+}
+
+.date time {
+  color: var(--color-black);
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 5px;
+}

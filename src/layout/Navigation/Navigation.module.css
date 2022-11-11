@@ -6,6 +6,12 @@
   padding-left: 60px;
 }
 
+@media (max-width: 1300px) {
+  .nav {
+    padding-left: 20px;
+  }
+}
+
 .nav-list {
   display: flex;
   flex-direction: column;

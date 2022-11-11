@@ -16,16 +16,11 @@ export const PostItem = ({ post }: PropsType) => {
       <div className={style.image}>
         <img src={dragon} alt="post cover" />
       </div>
-      <div>
-        <div>
-          <img alt="avatar" />
-        </div>
-        <div>
-          <p>{post.shortDescription}</p>
-          <span>{post.createdAt}</span>
-          <PostDescriptionWithBlog title={post.title} />
-        </div>
-      </div>
+      <PostDescriptionWithBlog
+        title={post.title}
+        description={post.shortDescription}
+        date={post.createdAt}
+      />
     </li>
   )
 }

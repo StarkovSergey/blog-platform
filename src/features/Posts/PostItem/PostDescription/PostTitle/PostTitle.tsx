@@ -9,7 +9,7 @@ type PropsType = {
 
 export const PostTitle = ({ children, className, ...props }: PropsType) => {
   return (
-    <h3 className={`${style.title} ${className}`} {...props}>
+    <h3 className={`${style.title} ${className ?? ''}`} {...props}>
       {children}
     </h3>
   )

@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/t
 
 import { blogReducer } from '../features/Blog'
 import { blogsReducer } from '../features/Blogs'
+import { postReducer } from '../features/Post'
 import { postsReducer } from '../features/Posts'
 
 const rootReducer = combineReducers({
   blogs: blogsReducer,
   blog: blogReducer,
   posts: postsReducer,
+  post: postReducer,
 })
 
 export const store = configureStore({

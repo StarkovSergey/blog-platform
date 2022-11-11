@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { Post, RequestStatus } from '../../common/types'
+import { RequestStatus, Post } from '../../common/types'
 
-import { fetchPosts } from './posts-actions'
+import { fetchPost } from './post-actions'
 
-const slice = createSlice({
-  name: 'posts',
+export const slice = createSlice({
+  name: 'post',
   initialState: {
     status: 'idle' as RequestStatus,
-    posts: [] as Post[],
+    post: {} as Post,
     error: null as null | string,
   },
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.posts = action.payload!.posts
+    builder.addCase(fetchPost.fulfilled, (state, action) => {
+      state.post = action.payload!.post
     })
     builder.addMatcher(
       action => action.type.endsWith('/pending'),
@@ -40,4 +40,4 @@ const slice = createSlice({
   },
 })
 
-export const postsReducer = slice.reducer
+export const postReducer = slice.reducer

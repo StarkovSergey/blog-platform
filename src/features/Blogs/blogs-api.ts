@@ -1,8 +1,13 @@
 import { instance } from '../../common/api-instances/basic-instance'
+import { Blog } from '../../common/types'
 
 export const blogsAPI = {
-  getBlogs() {
-    return instance.get<GetBlogsResponse>('blogs')
+  getBlogs(params?: GetBlogsParamsType) {
+    return instance.get<GetBlogsResponse>('blogs', {
+      params: {
+        pageSize: params?.pageSize || 15,
+      },
+    })
   },
 }
 
@@ -14,9 +19,10 @@ export type GetBlogsResponse = {
   items: Blog[]
 }
 
-export interface Blog {
-  name: string
-  youtubeUrl: string
-  createdAt: string
-  id: string
+export type GetBlogsParamsType = {
+  searchNameTerm?: string
+  pageNumber?: number
+  pageSize?: number
+  sortBy?: keyof Blog
+  sortDirection?: 'asc' | 'desc'
 }

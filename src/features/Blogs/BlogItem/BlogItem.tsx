@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import dragonPlaceholder from '../../../assets/images/placeholders/dragon.jpg'
-import { Blog } from '../blogs-api'
+import { Paths } from '../../../common/routes'
+import { Blog } from '../../../common/types'
 
 import style from './BlogItem.module.css'
 
@@ -16,7 +19,9 @@ export const BlogItem = ({ blog }: PropsType) => {
         <img src={dragonPlaceholder} alt="blog image" />
       </div>
       <div>
-        <h3 className={style.title}>{blog.name}</h3>
+        <h3 className={style.title}>
+          <Link to={`${Paths.Blogs}/${blog.id}`}>{blog.name}</Link>
+        </h3>
         <p className={style.description}>{blog.youtubeUrl}</p>
       </div>
     </li>

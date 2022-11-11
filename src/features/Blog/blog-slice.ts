@@ -2,19 +2,19 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { Blog, RequestStatus } from '../../common/types'
 
-import { fetchBlogs } from './blogs-actions'
+import { fetchBlog } from './blog-actions'
 
-const slice = createSlice({
-  name: 'blogs',
+export const slice = createSlice({
+  name: 'blog',
   initialState: {
     status: 'idle' as RequestStatus,
-    blogs: [] as Blog[],
+    blog: {} as Blog,
     error: null as null | string,
   },
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(fetchBlogs.fulfilled, (state, action) => {
-      state.blogs = action.payload!.blogs
+    builder.addCase(fetchBlog.fulfilled, (state, action) => {
+      state.blog = action.payload!.blog
     })
     builder.addMatcher(
       action => action.type.endsWith('/pending'),
@@ -40,4 +40,4 @@ const slice = createSlice({
   },
 })
 
-export const blogsReducer = slice.reducer
+export const blogReducer = slice.reducer

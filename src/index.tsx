@@ -8,6 +8,7 @@ import App from './app/App'
 import { store } from './app/store'
 import './styles/variables.css'
 import './styles/global.css'
+import './styles/common-classes.css'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)

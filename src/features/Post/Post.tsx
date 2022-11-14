@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BackLink } from '../../common/components/BackLink/BackLink'
+import { Breadcrumbs } from '../../common/components/Breadcrumbs/Breadcrumbs'
 import { Loader } from '../../common/components/Loader/Loader'
 import { useAppDispatch } from '../../common/hooks/useAppDispatch'
 import { useAppSelector } from '../../common/hooks/useAppSelector'
@@ -24,10 +25,22 @@ export const Post = () => {
     if (id) dispatch(fetchPost(id))
   }, [])
 
+  const breadcrumbs = [
+    {
+      title: 'Posts',
+      link: Paths.Posts,
+    },
+    {
+      title: post.blogName,
+      link: `${Paths.Blog}${post.blogId}`,
+    },
+  ]
+
   return status === 'loading' ? (
     <Loader className={style.loader} />
   ) : (
-    <MainSection title="Posts">
+    <MainSection>
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       <BackLink to={Paths.Posts} linkText="Back to posts" className={style['back-link']} />
       <div className={style.cover}>
         <img src="//unsplash.it/940/432" alt="post cover" />

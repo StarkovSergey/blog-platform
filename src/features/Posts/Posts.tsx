@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 
+import { Breadcrumbs } from '../../common/components/Breadcrumbs/Breadcrumbs'
 import { Loader } from '../../common/components/Loader/Loader'
 import { useAppDispatch } from '../../common/hooks/useAppDispatch'
 import { useAppSelector } from '../../common/hooks/useAppSelector'
+import { Paths } from '../../common/routes'
 import { MainSection } from '../../layout/MainSection/MainSection'
 
 import { PostItem } from './PostItem/PostItem'
@@ -19,8 +21,16 @@ export const Posts = () => {
     dispatch(fetchPosts())
   }, [])
 
+  const breadcrumbs = [
+    {
+      title: 'Posts',
+      link: Paths.Posts,
+    },
+  ]
+
   return (
-    <MainSection title="Posts">
+    <MainSection>
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       {status === 'loading' ? (
         <Loader />
       ) : (

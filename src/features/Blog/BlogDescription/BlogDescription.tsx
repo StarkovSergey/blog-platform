@@ -1,10 +1,11 @@
 import React from 'react'
 
-import dragonImage from '../../../assets/images/placeholders/dragon.jpg'
-import { Blog } from '../../../common/types'
-import { getDate } from '../../../common/utils'
-
 import style from './BlogDescription.module.css'
+
+import dragonImage from 'assets/images/placeholders/dragon.jpg'
+import { Button } from 'common/components'
+import { Blog } from 'common/types'
+import { getDate } from 'common/utils'
 
 type PropsType = {
   blog: Blog
@@ -25,7 +26,9 @@ export const BlogDescription = ({ blog }: PropsType) => {
         <p className={style.text}>
           <b>{blog.description}</b>
         </p>
-        <button>Show more</button>
+        <Button>
+          <span className={style['show-more-button-text']}>Show more</span>
+        </Button>
       </div>
     </div>
   )

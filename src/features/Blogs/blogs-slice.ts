@@ -7,14 +7,18 @@ import { fetchBlogs } from './blogs-actions'
 const slice = createSlice({
   name: 'blogs',
   initialState: {
-    status: 'idle' as RequestStatus,
     blogs: [] as Blog[],
+    pageSize: 6,
+    pagesCount: 1,
+    status: 'idle' as RequestStatus,
     error: null as null | string,
   },
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchBlogs.fulfilled, (state, action) => {
-      state.blogs = action.payload!.blogs
+      state.blogs = [...state.blogs, ...action.payload!.items]
+      state.pageSize = action.payload!.pageSize
+      state.pagesCount = action.payload!.pagesCount
     })
     builder.addMatcher(
       action => action.type.endsWith('/pending'),

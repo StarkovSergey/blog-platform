@@ -5,3 +5,7 @@
 .list li:last-child {
   border-bottom: none;
 }
+
+.show-more-button {
+  margin: 0 auto;
+}

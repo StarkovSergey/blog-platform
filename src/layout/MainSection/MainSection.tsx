@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react'
 
-import { Breadcrumbs } from '../../common/components/Breadcrumbs/Breadcrumbs'
-
 import style from './MainSection.module.css'
 
 interface PropsType {

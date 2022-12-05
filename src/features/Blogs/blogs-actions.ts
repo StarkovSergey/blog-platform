@@ -1,16 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { blogsAPI } from './blogs-api'
+import { blogsAPI, GetBlogsParamsType } from './blogs-api'
 
-export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (_, { rejectWithValue }) => {
-  try {
-    const response = await blogsAPI.getBlogs()
+import { Blog } from 'common/types'
 
-    return { blogs: response.data.items }
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      return rejectWithValue(e.message)
+export const fetchBlogs = createAsyncThunk(
+  'blogs/fetchBlogs',
+  async (params: GetBlogsParamsType = {}, { rejectWithValue }) => {
+    try {
+      const response = await blogsAPI.getBlogs(params)
+
+      return response.data
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        return rejectWithValue(e.message)
+      }
     }
   }
-})
+)

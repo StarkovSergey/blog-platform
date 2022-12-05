@@ -1,18 +1,21 @@
-import { instance } from '../../common/api-instances/basic-instance'
-import { Blog } from '../../common/types'
+import { instance } from 'common/api-instances/basic-instance'
+import { Blog } from 'common/types'
 
 export const blogsAPI = {
-  getBlogs(params?: GetBlogsParamsType) {
+  getBlogs(params: GetBlogsParamsType = {}) {
+    const { pageSize = 3 } = params
+
     return instance.get<GetBlogsResponse>('blogs', {
       params: {
-        pageSize: params?.pageSize || 15,
+        ...params,
+        pageSize,
       },
     })
   },
 }
 
 export type GetBlogsResponse = {
-  pageCount: number
+  pagesCount: number
   page: number
   pageSize: number
   totalCount: number

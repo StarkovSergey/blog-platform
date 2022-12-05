@@ -1,0 +1,13 @@
+.show-more-button {
+  display: flex;
+  align-items: center;
+
+  font-weight: 600;
+  color: var(--color-black);
+
+  border-color: var(--color-black);
+}
+
+.icon {
+  margin-left: 11px;
+}

@@ -1,5 +1,5 @@
-import { instance } from '../../common/api-instances/basic-instance'
-import { Post } from '../../common/types/posts'
+import { instance } from 'common/api-instances/basic-instance'
+import { Post } from 'common/types'
 
 export const postsAPI = {
   getPosts() {

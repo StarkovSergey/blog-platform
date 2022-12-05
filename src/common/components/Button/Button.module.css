@@ -3,6 +3,7 @@
   padding: 8px 29px;
 
   font-size: var(--button-fz);
+  font-weight: 600;
   line-height: var(--basiz-lh);
   color: var(--color-neutral-light);
   text-align: center;

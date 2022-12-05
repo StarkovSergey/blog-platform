@@ -1,11 +1,14 @@
 :root {
   --color-black: #1a1718;
   --color-neutral-light: #fcfbfb;
+  --color-neutral-dark: #737067;
 
   --color-light-bg-gray: #fcfbfb;
   --color-bg-gray: #faf7f8;
   --color-grey: #dedbdc;
   --color-grey-font: #797476;
+
+  --color-blue: #3677f7;
 
   --color-brand-red: #f8346b;
   --color-brand-orange: #f8b26a;

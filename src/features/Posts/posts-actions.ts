@@ -1,16 +1,25 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { postsAPI } from './posts-api'
+import { AppRootState } from '../../app/store'
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (_, { rejectWithValue }) => {
-  try {
-    const response = await postsAPI.getPosts()
+import { GetPostsParams, postsAPI } from './posts-api'
 
-    return { posts: response.data.items }
-  } catch (e) {
-    if (axios.isAxiosError(e)) {
-      return rejectWithValue(e.message)
+export const fetchPosts = createAsyncThunk(
+  'posts/fetchPosts',
+  async (params: GetPostsParams = {}, { rejectWithValue, getState }) => {
+    try {
+      const pageSize = (getState() as AppRootState).posts.pageSize
+      const response = await postsAPI.getPosts({
+        ...params,
+        pageSize,
+      })
+
+      return response.data
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        return rejectWithValue(e.message)
+      }
     }
   }
-})
+)

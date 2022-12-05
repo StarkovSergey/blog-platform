@@ -13,7 +13,11 @@ const slice = createSlice({
     status: 'idle' as RequestStatus,
     error: null as null | string,
   },
-  reducers: {},
+  reducers: {
+    resetBlogsState(state) {
+      state.blogs = []
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchBlogs.fulfilled, (state, action) => {
       state.blogs = [...state.blogs, ...action.payload!.items]
@@ -45,3 +49,4 @@ const slice = createSlice({
 })
 
 export const blogsReducer = slice.reducer
+export const { resetBlogsState } = slice.actions

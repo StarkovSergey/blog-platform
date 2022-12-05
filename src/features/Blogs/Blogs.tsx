@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
-import { BlogItem } from './BlogItem/BlogItem'
-import { fetchBlogs } from './blogs-actions'
-import style from './Blogs.module.css'
-import { selectBlogs, selectBlogsPagesCount, selectBlogsStatus } from './selectors'
+import { useLocation } from 'react-router-dom'
 
-import { Breadcrumbs, LinearProgress } from 'common/components'
-import { ShowMoreButton } from 'common/components/Button/ShowMoreButton/ShowMoreButton'
+import style from './Blogs.module.css'
+
+import { Breadcrumbs, LinearProgress, ShowMoreButton } from 'common/components'
 import { useAppDispatch, useAppSelector } from 'common/hooks'
 import { Paths } from 'common/routes'
+import {
+  BlogItem,
+  fetchBlogs,
+  resetBlogsState,
+  selectBlogs,
+  selectBlogsPagesCount,
+  selectBlogsPageSize,
+  selectBlogsStatus,
+} from 'features/Blogs'
 import { MainSection } from 'layout/MainSection/MainSection'
 
 export const Blogs = () => {
@@ -16,13 +23,18 @@ export const Blogs = () => {
   const status = useAppSelector(selectBlogsStatus)
   const blogs = useAppSelector(selectBlogs)
   const pagesCount = useAppSelector(selectBlogsPagesCount)
+  const pageSize = useAppSelector(selectBlogsPageSize)
+  const location = useLocation()
 
   const [pageNumber, setPageNumber] = useState(1)
 
   useEffect(() => {
-    console.log(pageNumber)
     dispatch(fetchBlogs({ pageNumber }))
   }, [pageNumber])
+
+  useEffect(() => {
+    dispatch(resetBlogsState())
+  }, [location])
 
   const breadcrumbs = [
     {
@@ -30,6 +42,8 @@ export const Blogs = () => {
       link: Paths.Blogs,
     },
   ]
+
+  const isButtonShow = blogs.length < (pagesCount - 1) * pageSize + 1 && blogs.length !== 0
 
   return (
     <MainSection>
@@ -41,10 +55,11 @@ export const Blogs = () => {
         })}
       </ul>
 
-      {pageNumber < pagesCount && (
+      {isButtonShow && (
         <ShowMoreButton
           onClick={() => setPageNumber(pageNumber + 1)}
           className={style['show-more-button']}
+          disabled={status === 'loading'}
         >
           Show more
         </ShowMoreButton>

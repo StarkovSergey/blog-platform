@@ -2,7 +2,7 @@ import { instance } from 'common/api-instances/basic-instance'
 import { Blog } from 'common/types'
 
 export const blogsAPI = {
-  getBlogs(params: GetBlogsParamsType = {}) {
+  getBlogs(params: GetBlogsParams = {}) {
     const { pageSize = 3 } = params
 
     return instance.get<GetBlogsResponse>('blogs', {
@@ -22,7 +22,7 @@ export type GetBlogsResponse = {
   items: Blog[]
 }
 
-export type GetBlogsParamsType = {
+export type GetBlogsParams = {
   searchNameTerm?: string
   pageNumber?: number
   pageSize?: number

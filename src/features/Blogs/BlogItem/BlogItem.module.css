@@ -27,10 +27,21 @@
 
 .title {
   margin: 0;
-  margin-bottom: 50px;
+  margin-bottom: 2px;
 
   font-size: var(--title-fz);
   line-height: var(--title-lh);
+}
+
+.link-description {
+  margin: 0;
+  margin-bottom: 24px;
+
+  color: var(--color-neutral-dark);
+}
+
+.link-text {
+  color: var(--color-blue);
 }
 
 .description {

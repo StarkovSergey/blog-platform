@@ -11,13 +11,14 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 930px) {
   .grid {
     grid-template-columns: repeat(1, 300px);
   }
 }
 
 .content-box {
+  margin-bottom: 44px;
   padding-top: 23px;
 }
 
@@ -26,4 +27,8 @@
 
   margin-bottom: 13px;
   margin-left: auto;
+}
+
+.show-more-button {
+  margin: 0 auto;
 }

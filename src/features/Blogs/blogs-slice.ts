@@ -20,9 +20,14 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchBlogs.fulfilled, (state, action) => {
-      state.blogs = [...state.blogs, ...action.payload!.items]
-      state.pageSize = action.payload!.pageSize
-      state.pagesCount = action.payload!.pagesCount
+      state.pageSize = action.payload!.data.pageSize
+      state.pagesCount = action.payload!.data.pagesCount
+
+      if (action.payload!.isShowMore) {
+        state.blogs = [...state.blogs, ...action.payload!.data.items]
+      } else {
+        state.blogs = action.payload!.data.items
+      }
     })
     builder.addMatcher(
       action => action.type.endsWith('/pending'),

@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import style from './Blogs.module.css'
+import { sortSelectOptions } from './sort-select-options'
 
-import { Breadcrumbs, LinearProgress, ShowMoreButton } from 'common/components'
+import { Breadcrumbs, LinearProgress, Search, Select, ShowMoreButton } from 'common/components'
 import { useAppDispatch, useAppSelector } from 'common/hooks'
 import { Paths } from 'common/routes'
 import {
@@ -27,10 +28,35 @@ export const Blogs = () => {
   const location = useLocation()
 
   const [pageNumber, setPageNumber] = useState(1)
+  const [sort, setSort] = useState(sortSelectOptions[0])
 
   useEffect(() => {
-    dispatch(fetchBlogs({ pageNumber }))
-  }, [pageNumber])
+    dispatch(
+      fetchBlogs({
+        params: {
+          pageNumber,
+          sortBy: sort.value.sortBy,
+          sortDirection: sort.value.sortDirection,
+        },
+      })
+    )
+  }, [sort])
+
+  const showMoreButtonHandler = () => {
+    const newPageNumber = pageNumber + 1
+
+    setPageNumber(newPageNumber)
+    dispatch(
+      fetchBlogs({
+        params: {
+          pageNumber: newPageNumber,
+          sortBy: sort.value.sortBy,
+          sortDirection: sort.value.sortDirection,
+        },
+        isShowMore: true,
+      })
+    )
+  }
 
   useEffect(() => {
     dispatch(resetBlogsState())
@@ -47,8 +73,17 @@ export const Blogs = () => {
 
   return (
     <MainSection>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
       {status === 'loading' && <LinearProgress />}
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <div className={style['sort-bar']}>
+        <Search className={style.search} />
+        <Select
+          className={style.select}
+          options={sortSelectOptions}
+          value={sort}
+          onChange={option => setSort(option)}
+        />
+      </div>
       <ul className={style.list}>
         {blogs.map(blog => {
           return <BlogItem key={blog.id} blog={blog} />
@@ -57,7 +92,7 @@ export const Blogs = () => {
 
       {isButtonShow && (
         <ShowMoreButton
-          onClick={() => setPageNumber(pageNumber + 1)}
+          onClick={showMoreButtonHandler}
           className={style['show-more-button']}
           disabled={status === 'loading'}
         >

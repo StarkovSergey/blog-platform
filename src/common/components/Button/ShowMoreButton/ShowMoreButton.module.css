@@ -10,4 +10,10 @@
 
 .icon {
   margin-left: 11px;
+
+  transition: 200ms transform;
+}
+
+.show-more-button:disabled .icon {
+  transform: rotate(180deg);
 }

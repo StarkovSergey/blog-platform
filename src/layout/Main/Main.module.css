@@ -5,3 +5,9 @@
 
   padding-top: 29px;
 }
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 125px 1fr;
+  }
+}

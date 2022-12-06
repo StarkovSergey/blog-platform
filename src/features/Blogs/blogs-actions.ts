@@ -1,13 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { AppRootState } from '../../app/store'
-
 import { blogsAPI, GetBlogsParams } from './blogs-api'
+
+import { AppRootState } from 'app/store'
 
 export const fetchBlogs = createAsyncThunk(
   'blogs/fetchBlogs',
-  async (params: GetBlogsParams = {}, { rejectWithValue, getState }) => {
+  async (
+    { params = {}, isShowMore = false }: { params: GetBlogsParams; isShowMore?: boolean },
+    { rejectWithValue, getState }
+  ) => {
     try {
       const pageSize = (getState() as AppRootState).blogs.pageSize
       const response = await blogsAPI.getBlogs({
@@ -15,7 +18,10 @@ export const fetchBlogs = createAsyncThunk(
         pageSize,
       })
 
-      return response.data
+      return {
+        data: response.data,
+        isShowMore,
+      }
     } catch (e) {
       if (axios.isAxiosError(e)) {
         return rejectWithValue(e.message)

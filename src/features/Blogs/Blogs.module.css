@@ -9,3 +9,18 @@
 .show-more-button {
   margin: 0 auto;
 }
+
+.sort-bar {
+  display: flex;
+  gap: 12px;
+
+  padding: 24px 0;
+}
+
+.search {
+  flex-grow: 1;
+}
+
+.select {
+  width: 256px;
+}

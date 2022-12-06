@@ -1,9 +1,9 @@
 import React, {
   ChangeEvent,
-  KeyboardEvent,
   DetailedHTMLProps,
   forwardRef,
   InputHTMLAttributes,
+  KeyboardEvent,
 } from 'react'
 
 import style from './Search.module.css'
@@ -17,6 +17,7 @@ type PropsType = DefaultInputPropsType & {
   label?: string
   onChangeText?: (value: string) => void
   onEnter?: () => void
+  className?: string
 }
 
 export const Search = forwardRef<HTMLInputElement, PropsType>(
@@ -34,15 +35,16 @@ export const Search = forwardRef<HTMLInputElement, PropsType>(
     }
 
     return (
-      <div>
+      <div className={className}>
         <label>
           {label}
           <input
-            className={`${style.input} ${className}`}
+            className={`${style.input}`}
             type="text"
             ref={ref}
             onChange={onChangeInputHandler}
             onKeyDown={onKeyDownHandler}
+            placeholder="Search"
             {...props}
           />
         </label>

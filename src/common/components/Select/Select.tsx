@@ -4,7 +4,7 @@ import style from './Select.module.css'
 
 export type SelectOption = {
   label: string
-  value: string
+  value: any
 }
 
 type PropsType = {
@@ -50,12 +50,12 @@ export const Select = ({ value, onChange, options, className }: PropsType) => {
       tabIndex={0}
       className={`${style.container} ${className || ''}`}
     >
-      <span className={style.value}>{value?.label || 'Choose a blog'}</span>
+      <span className={style.value}>{value?.label || 'Choose a item'}</span>
 
       <ul className={`${style.options} ${isOpen ? style.show : ''}`}>
-        {options.map(option => (
+        {options.map((option, index) => (
           <li
-            key={option.value}
+            key={index}
             onClick={e => {
               e.stopPropagation()
               selectOption(option)
